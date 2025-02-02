@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Domain;
+namespace Domain.Entities;
 
 public class Play
 {
@@ -14,7 +14,7 @@ public class Play
 
     public IReadOnlyList<Actor> Actors { get; private init; } = new List<Actor>();
 
-    public Play( string name, string stageDirector, DateTime startDate, DateTime endDate )
+    public Play(string name, string stageDirector, DateTime startDate, DateTime endDate)
     {
         Name = name;
         StageDirector = stageDirector;
@@ -24,13 +24,13 @@ public class Play
 
     public override string ToString()
     {
-        StringBuilder sb = new( 300 );
-        sb.AppendLine( "[Play]" );
-        sb.AppendLine( $"  Id: {Id}" );
-        sb.AppendLine( $"  Name: {Name}" );
-        sb.AppendLine( $"  StageDirector:{StageDirector}" );
-        sb.AppendLine( $"  StartDate:{StartDate}" );
-        sb.AppendLine( $"  EndDate:{EndDate}" );
+        StringBuilder sb = new(300);
+        sb.AppendLine("[Play]");
+        sb.AppendLine($"  Id: {Id}");
+        sb.AppendLine($"  Name: {Name}");
+        sb.AppendLine($"  StageDirector:{StageDirector}");
+        sb.AppendLine($"  StartDate:{StartDate}");
+        sb.AppendLine($"  EndDate:{EndDate}");
 
         return sb.ToString();
     }

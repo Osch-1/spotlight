@@ -4,7 +4,6 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SpotlightDbContext))]
-    [Migration("20240716152438_InitialMigration")]
-    partial class InitialMigration
+    partial class SpotlightDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +37,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("ActorToPlay");
                 });
 
-            modelBuilder.Entity("Domain.Actor", b =>
+            modelBuilder.Entity("Domain.Entities.Actor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +68,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Actor", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Play", b =>
+            modelBuilder.Entity("Domain.Entities.Play", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +102,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Play", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Theater", b =>
+            modelBuilder.Entity("Domain.Entities.Theater", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,29 +135,29 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("ActorToPlay", b =>
                 {
-                    b.HasOne("Domain.Actor", null)
+                    b.HasOne("Domain.Entities.Actor", null)
                         .WithMany()
                         .HasForeignKey("ActorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Play", null)
+                    b.HasOne("Domain.Entities.Play", null)
                         .WithMany()
                         .HasForeignKey("PlaysId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Play", b =>
+            modelBuilder.Entity("Domain.Entities.Play", b =>
                 {
-                    b.HasOne("Domain.Theater", null)
+                    b.HasOne("Domain.Entities.Theater", null)
                         .WithMany("Plays")
                         .HasForeignKey("TheaterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Theater", b =>
+            modelBuilder.Entity("Domain.Entities.Theater", b =>
                 {
                     b.Navigation("Plays");
                 });

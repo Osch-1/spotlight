@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace Domain.Entities;
 
 public class Actor
 {
@@ -38,5 +38,15 @@ public class Actor
         Surname = surname;
         PhoneNumber = phoneNumber;
         DateOfBirth = dateOfBirth;
+    }
+
+    public void SetName( string newName )
+    {
+        if ( string.IsNullOrWhiteSpace( newName ) )
+        {
+            throw new ArgumentException( "Actor name must be non null and non empty string.", nameof( newName ) );
+        }
+
+        Name = newName;
     }
 }

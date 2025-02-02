@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Domain;
+namespace Domain.Entities;
 
 public class Theater
 {
@@ -12,7 +12,7 @@ public class Theater
 
     public List<Play> Plays { get; private init; } = new List<Play>();
 
-    public Theater( string name, string address, string phoneNumber, DateTime openingDate )
+    public Theater(string name, string address, string phoneNumber, DateTime openingDate)
     {
         Name = name;
         Address = address;
@@ -25,17 +25,17 @@ public class Theater
 
     public override string ToString()
     {
-        StringBuilder sb = new( 300 );
-        sb.AppendLine( "[Theater]" );
-        sb.AppendLine( $"  Id: {Id}" );
-        sb.AppendLine( $"  Name: {Name}" );
-        sb.AppendLine( $"  Address: {Address}" );
-        sb.AppendLine( $"  PhoneNumber: {PhoneNumber}" );
-        sb.AppendLine( $"  OpeningDate: {OpeningDate}" );
-        sb.AppendLine( $"  [Plays]: " );
-        foreach ( Play play in Plays )
+        StringBuilder sb = new(300);
+        sb.AppendLine("[Theater]");
+        sb.AppendLine($"  Id: {Id}");
+        sb.AppendLine($"  Name: {Name}");
+        sb.AppendLine($"  Address: {Address}");
+        sb.AppendLine($"  PhoneNumber: {PhoneNumber}");
+        sb.AppendLine($"  OpeningDate: {OpeningDate}");
+        sb.AppendLine($"  [Plays]: ");
+        foreach (Play play in Plays)
         {
-            sb.AppendLine( $"    {play}" );
+            sb.AppendLine($"    {play}");
         }
 
         return sb.ToString();
